@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'zeus'
+Zeus::CLI.start(ARGV)
