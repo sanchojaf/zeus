@@ -1,0 +1,32 @@
+{
+  "resources": {
+  	"users": {
+      "fields": {
+    		"_id": {
+    			"references": {
+    				"tickets": {
+    					"display_field": "subject",
+    					"ref_fields": [
+    						"submitter_id"
+    					]
+    				}
+    			}
+    		}
+      }
+  	},
+  	"organizations": {
+      "fields": {
+    		"_id": {
+    			"references": {
+    				"users": {
+    					"display_field": "name",
+    					"ref_fields": [
+    						"organization_id"
+    					]
+    				}
+    			}
+    		}
+      }
+  	}
+  }
+}

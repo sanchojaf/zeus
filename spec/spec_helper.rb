@@ -1,5 +1,6 @@
 require "bundler/setup"
-require "zeus"
+require 'rspec'
+require 'zeus'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

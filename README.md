@@ -1,8 +1,6 @@
 # Zeus
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zeus`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Zeus! Queries on JSON files
 
 ## Installation
 
@@ -20,9 +18,31 @@ Or install it yourself as:
 
     $ gem install zeus
 
+
+# Commands:    
+  zeus fields [file_name]                # List of searchable fields of a json file
+  zeus find_by [file_name, attr, value]  # find by attr for a value
+  zeus help [COMMAND]                    # Describe available commands or one specific command
+  zeus list                              # List json files in the current directory
+
 ## Usage
 
-TODO: Write usage instructions here
+`zeus find_by [file_name, attr, value]`
+
+Description:  
+
+`find_by users _id 71` will print out the record field `_id` value `71` for file <users.json>.
+
+users.json should exist in the directory
+
+Values from any related entities are included in the results only if exist a zeus.json file with the specification for foreign keys:
+
+The next example define `submitter_id` in `tickets.json` as foreign keys of `_id' in users.json
+
+```json
+"resources":{"users":{"fields":{"_id":"references":{"tickets":{"original_name_field":"subject","ref_fields":["submitter_id"]}}}}}
+```
+
 
 ## Development
 
