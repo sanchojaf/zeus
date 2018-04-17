@@ -7,10 +7,10 @@ module Zeus
 
     attr_reader :config, :resources
 
-    def initialize
-      @config = Zeus::Configuration.new
+    def initialize(path = nil)
+      @config = Configuration.new(path)
       @resources = []
-      load!
+      load!(path)
     end
 
     def find_by(resource_name, attr, value)
@@ -27,10 +27,10 @@ module Zeus
         resources.detect { |re| re.name == resource_name }
       end
 
-      def load!
-        each_json_file do |json_file_name|
-          next if json_file_name == config.meta_file_name
-          self.resources << Resource.new(json_file_name)
+      def load!(path = nil)
+        each_json_file(path) do |file_name, file_path|
+          next if file_name == config.meta_file_name
+          @resources << Resource.new(file_name, file_path)
         end
       end
 
@@ -45,6 +45,7 @@ module Zeus
           merge_ref_values = []
           entry[config.ref_fields].each do |ref_attr|
             merge_ref_values += find_all(other_file, ref_attr, orig_id_value)
+        
           end
           merge_ref_values.each_with_index do |item, i|
             original_name_field = entry[config.original_name_field]

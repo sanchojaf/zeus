@@ -40,7 +40,16 @@ Values from any related entities are included in the results only if exist a zeu
 The next example define `submitter_id` in `tickets.json` as foreign keys of `_id' in users.json
 
 ```json
-"resources":{"users":{"fields":{"_id":"references":{"tickets":{"original_name_field":"subject","ref_fields":["submitter_id"]}}}}}
+{
+  "resources": {
+  	"users": {
+      "fields": {
+    		"_id": {
+    			"references": {
+    				"tickets": {
+    					"display_field": "subject",
+    					"ref_fields": [
+    						"submitter_id"]}}}}}}}
 ```
 
 

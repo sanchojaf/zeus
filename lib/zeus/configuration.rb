@@ -3,13 +3,13 @@ module Zeus
   class Configuration
     include Loader
 
-    attr_accessor :meta_hash, :meta_file_name
+    attr_reader :meta_hash, :meta_file_name
 
     META_FILE = 'zeus.json'
 
-    def initialize
+    def initialize(path = nil)
       @meta_file_name = META_FILE
-      @meta_hash = load_json_file!(META_FILE)
+      @meta_hash = load_json_file!(META_FILE, path)
     end
 
     def references?(resource_name, attr)

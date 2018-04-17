@@ -4,17 +4,13 @@ require 'zeus/loader'
 module Zeus
   class Resource
     include Zeus::Loader
-    attr_accessor :file_name, :data_hash, :fields
+    attr_reader :name, :data_hash, :fields, :path
 
-    def initialize(file_name)
-      file_name += '.json' unless file_name =~ /\.json$/
-      @file_name = file_name
-      @data_hash = load_json_file!(file_name)
+    def initialize(name, path = nil)
+      @name = base_file_name(name)
+      @path = path
+      @data_hash = load_json_file!(name, path)
       load_fields!
-    end
-
-    def name
-      base_file_name(file_name)
     end
 
     def find_by(attr, value)
@@ -32,7 +28,7 @@ module Zeus
           next unless entry.is_a? Hash
           entry.keys.each { |key| attributes[key] ||= nil }
         end
-        self.fields = attributes.keys
+        @fields = attributes.keys
       end
 
   end

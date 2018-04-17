@@ -5,7 +5,7 @@
     		"_id": {
     			"references": {
     				"tickets": {
-    					"display_field": "subject",
+    					"original_name_field": "subject",
     					"ref_fields": [
     						"submitter_id"
     					]
@@ -19,7 +19,7 @@
     		"_id": {
     			"references": {
     				"users": {
-    					"display_field": "name",
+    					"original_name_field": "name",
     					"ref_fields": [
     						"organization_id"
     					]
