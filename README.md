@@ -1,29 +1,67 @@
 # Zeus
 
-Zeus! Queries on JSON files
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'zeus'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install zeus
-
+Zeus! Is a CLI to made simple queries to JSON files.
 
 # Commands:    
   zeus fields [file_name]                # List of searchable fields of a json file
-  zeus find_by [file_name, attr, value]  # find by attr for a value
-  zeus help [COMMAND]                    # Describe available commands or one specific command
-  zeus list                              # List json files in the current directory
+  zeus find_by [file_name, attr, value]  # find by an attribute and a value
+  zeus help [COMMAND]                    # Describe available commands or one specific
+                                         # command
+  zeus list                              # List of json files in the current directory
+
+## Installation
+
+Clone the repository:
+
+```shell
+# clone the repo
+
+# using ssh
+$ git clone git@github.com:sanchojaf/zeus.git
+
+# using https
+$ git clone https://github.com/sanchojaf/zeus.git
+```
+
+Move to the root folder
+
+`$ cd zeus`
+
+The exe directive we used to create the gem, generated a zeus binary from the project. Change the permissions so we can execute the file:
+
+`$ chmod +x exe/zeus`
+
+Now, we are able to call it:
+
+`$ bundle exec exe/zeus help`
+
+But in way we are limited to use in the root of the project folder.
+
+To use in any folder, install the gem locally using rake.
+
+`$ bundle exec rake install`
+
+Now we can use the Zeus CLI like any other command line in shell.
+
+Call it:
+
+`zeus help`
+
+## requirements
+
+dependencies
+- ruby
+- bundler
+- rake
+- rspec
+
+Was implemented and tested with `ruby-2.3.0` but you should be able to use other version of ruby.
+
+## Assumptions
+
+Files should be similar to the examples files that we have for testing
+
+[sample jsons](spec/support/jsons)
 
 ## Usage
 
@@ -61,4 +99,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/zeus.
+Bug reports and pull requests are welcome on GitHub at https://github.com/sanchojaf/zeus

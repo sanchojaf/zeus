@@ -5,7 +5,7 @@ module Zeus
 
     def load_json_file!(path)
       return nil if path.nil?
-      begin      
+      begin
         # return data_hash unless data_hash.nil?
         file = File.read(path)
         # self.data_hash =

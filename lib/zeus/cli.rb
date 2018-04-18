@@ -13,10 +13,15 @@ module Zeus
   attr_reader :searcher
 
   def initialize(*args)
+
+    # Hack to allow initialize with a directory path
+    # In particular is useful for rspec
+    # after copy and delete from parameter before call super
     if args[0].is_a?(Hash) && args[0].key?(:path)
       path = args[0][:path]
       args.shift
     end
+
     super
     @searcher = Search.new(path)
   end
@@ -28,8 +33,8 @@ module Zeus
 
      users.json should exist in the directory
 
-     Values from any related entities are included in the results
-     only if exist a zeus.json file with the specification for foreign keys:
+     Values from any related entities could be included in the results
+     if exist a zeus.json file with the specifications for foreign keys:
 
      The next example define `submitter_id` in `tickets.json` as foreign keys
      of '_id' in users.json
