@@ -39,7 +39,7 @@ Values from any related entities are included in the results only if exist a zeu
 
 The next example define `submitter_id` in `tickets.json` as foreign keys of `_id' in users.json
 
-```json
+```ruby
 {
   "resources": {
   	"users": {

@@ -2,11 +2,11 @@ require 'spec_helper'
 require_relative '../../lib/zeus/resource'
 
 RSpec.describe 'Zeus::Resource' do
-  let(:path) do
+  let(:path_directory) do
     File.dirname(File.dirname(File.absolute_path(__FILE__))) + '/support/jsons'
   end
 
-  let(:search) { Zeus::Search.new(path) }
+  let(:search) { Zeus::Search.new(path_directory) }
 
   context "#find_by" do
     let(:fragment_user_id_71) do

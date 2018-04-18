@@ -5,39 +5,41 @@ module Zeus
   class Search
     include Loader
 
-    attr_reader :config, :resources
+    attr_reader :config, :resources, :path_directory
 
-    def initialize(path = nil)
-      @config = Configuration.new(path)
+    def initialize(path_directory = nil)
+      @path_directory = path_directory
+      @config = Configuration.new(path_directory)
       @resources = []
-      load!(path)
+      load!(path_directory)
     end
 
     def find_by(resource_name, attr, value)
       result = find_in_file(resource_name, attr, value)
+      return nil if result.nil?
       ref_results = find_references(resource_name, config.id_field, result[config.id_field])
       result.merge!(ref_results)
       result
     end
 
+    def resource(name)
+      resource_name = base_file_name(name)
+      resources.detect { |re| re.name == resource_name }
+    end
+
     private
 
-      def resource(name)
-        resource_name = base_file_name(name)
-        resources.detect { |re| re.name == resource_name }
-      end
-
       def load!(path = nil)
-        each_json_file(path) do |file_name, file_path|
-          next if file_name == config.meta_file_name
-          @resources << Resource.new(file_name, file_path)
+        each_json_file(path) do |file_path|
+          next if File.basename(file_path) == config.meta_file_name
+          @resources << Resource.new(file_path)
         end
       end
 
       def find_references(resource_name, attr, orig_id_value)
         result = {}
         references = config.references(resource_name, attr)
-        return result if references.empty?
+        return result if references.nil? || references.empty?
 
 
         references.each do |other_file, entry|
@@ -45,7 +47,7 @@ module Zeus
           merge_ref_values = []
           entry[config.ref_fields].each do |ref_attr|
             merge_ref_values += find_all(other_file, ref_attr, orig_id_value)
-        
+
           end
           merge_ref_values.each_with_index do |item, i|
             original_name_field = entry[config.original_name_field]
@@ -63,6 +65,7 @@ module Zeus
 
       def find_in_file(resource_name, attr, value)
         resource = resource(resource_name)
+        return nil if resource.nil?
         resource.find_by(attr, value)
       end
   end

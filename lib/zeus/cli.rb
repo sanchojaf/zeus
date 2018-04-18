@@ -3,13 +3,22 @@ require 'zeus/search'
 require 'zeus/resource'
 require 'zeus/configuration'
 
+# The command line interface for {Zeus}.
+#
+# See the source or the command line tool `bin/zeus` for more
+# information
 module Zeus
  class CLI < Thor
+  include Thor::Actions
   attr_reader :searcher
 
   def initialize(*args)
+    if args[0].is_a?(Hash) && args[0].key?(:path)
+      path = args[0][:path]
+      args.shift
+    end
     super
-    @searcher = Search.new
+    @searcher = Search.new(path)
   end
 
   desc "find_by [file_name, attr, value]", "find by attr for a value"
@@ -44,7 +53,6 @@ module Zeus
 
   desc "fields [file_name]", "List of searchable fields of a json file"
   def fields(file_name)
-    file_name = Resource.rm_ext(file_name)
     if (resource = searcher.resource(file_name))
       puts "List of searchable fields in #{file_name}:"
       puts resource.fields

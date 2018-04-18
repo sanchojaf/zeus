@@ -3,9 +3,9 @@ require_relative '../../lib/zeus/resource'
 
 RSpec.describe 'Zeus::Resource' do
   let(:path) do
-    File.dirname(File.dirname(File.absolute_path(__FILE__))) + '/support/jsons'
+    File.dirname(File.dirname(File.absolute_path(__FILE__))) + '/support/jsons/users.json'
   end
-  let(:users) { Zeus::Resource.new('users', path) }
+  let(:users) { Zeus::Resource.new(path) }
 
   specify '#fields' do
     expected = [

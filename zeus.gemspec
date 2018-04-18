@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Miguel Sancho"]
   spec.email         = ["sanchojaf@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{Zeus! Queries on JSON files.}
+  spec.description   = %q{Does queries like: find_by users _id 71 for users.json file }
   spec.homepage      = ""
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

@@ -6,10 +6,10 @@ module Zeus
     include Zeus::Loader
     attr_reader :name, :data_hash, :fields, :path
 
-    def initialize(name, path = nil)
-      @name = base_file_name(name)
+    def initialize(path)
+      @name = base_file_name(path)
       @path = path
-      @data_hash = load_json_file!(name, path)
+      @data_hash = load_json_file!(@path)
       load_fields!
     end
 

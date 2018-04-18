@@ -3,7 +3,7 @@ require_relative '../../lib/zeus/configuration'
 
 RSpec.describe 'Zeus::Configuration' do
   let(:path) do
-    File.dirname(File.dirname(File.absolute_path(__FILE__))) + '/support/jsons'
+    File.dirname(File.dirname(File.absolute_path(__FILE__))) + '/support/jsons/zeus.json'
   end
   let(:config) { Zeus::Configuration.new(path) }
 
@@ -33,7 +33,7 @@ RSpec.describe 'Zeus::Configuration' do
   end
 
   specify '#ref_fields' do
-    expect(config.id_field).to match('ref_fields')
+    expect(config.ref_fields).to match('ref_fields')
   end
 
   specify '#original_name_field' do
