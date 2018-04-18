@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Zeus! Queries on JSON files.}
   spec.description   = %q{Does queries like: find_by users _id 71 for users.json file }
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/sanchojaf/zeus"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

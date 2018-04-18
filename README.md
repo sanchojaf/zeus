@@ -42,14 +42,14 @@ The next example define `submitter_id` in `tickets.json` as foreign keys of `_id
 ```ruby
 {
   "resources": {
-  	"users": {
+    "users": {
       "fields": {
-    		"_id": {
-    			"references": {
-    				"tickets": {
-    					"display_field": "subject",
-    					"ref_fields": [
-    						"submitter_id"]}}}}}}}
+        "_id": {
+          "references": {
+            "tickets": {
+              "display_field": "subject",
+                "ref_fields": [
+                  "submitter_id"]}}}}}}}
 ```
 
 
