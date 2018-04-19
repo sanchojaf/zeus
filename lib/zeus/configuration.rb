@@ -1,4 +1,8 @@
 require 'zeus/loader'
+
+# Configuration allow define metada data
+# to improve the retrieve of related data
+# between resources
 module Zeus
   class Configuration
     include Loader
@@ -20,6 +24,7 @@ module Zeus
       @path = path
       # load the metafile in a hash
       @meta_hash = load_json_file!(@path)
+    
     end
 
     # Find if exists references (foreign keys) for a partircular resouce attribute

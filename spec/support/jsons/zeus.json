@@ -23,6 +23,12 @@
     					"ref_fields": [
     						"organization_id"
     					]
+    				},
+            "tickets": {
+    					"original_name_field": "subject",
+    					"ref_fields": [
+    						"organization_id"
+    					]
     				}
     			}
     		}

@@ -9,22 +9,23 @@ RSpec.describe 'Zeus::Configuration' do
 
   specify '#meta_hash' do
     expected =
-      {"resources"=>
-        {"users"=>
-          {"fields"=>
-            {"_id"=>
-              {"references"=>
-                {"tickets"=>
-                  {"original_name_field"=>"subject",
-                   "ref_fields"=>["submitter_id"]}}}}},
-         "organizations"=>
-          {"fields"=>
-            {"_id"=>
-              {"references"=>
-                {"users"=>
-                  {"original_name_field"=>"name",
-                   "ref_fields"=>["organization_id"]}}}}}}}
-
+    {"resources"=>
+      {"users"=>
+        {"fields"=>
+          {"_id"=>
+            {"references"=>
+              {"tickets"=>
+                {"original_name_field"=>"subject",
+                 "ref_fields"=>["submitter_id"]}}}}},
+       "organizations"=>
+        {"fields"=>
+          {"_id"=>
+            {"references"=>
+              {"users"=>
+                {"original_name_field"=>"name", "ref_fields"=>["organization_id"]},
+               "tickets"=>
+                {"original_name_field"=>"subject",
+                 "ref_fields"=>["organization_id"]}}}}}}}
     expect(config.meta_hash).to match(expected)
   end
 
@@ -49,7 +50,7 @@ RSpec.describe 'Zeus::Configuration' do
 
     specify "sample organizations references" do
       user_references = config.references('organizations', '_id')
-      expected = {"users" => {"original_name_field"=>"name", "ref_fields"=>["organization_id"]}}
+      expected = {"users"=>{"original_name_field"=>"name", "ref_fields"=>["organization_id"]}, "tickets"=>{"original_name_field"=>"subject", "ref_fields"=>["organization_id"]}}
       expect(user_references).to eq(expected)
     end
   end

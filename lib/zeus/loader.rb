@@ -1,8 +1,12 @@
 require 'json'
 
+# Loader is a module simplify
+# operation with files
 module Zeus
   module Loader
 
+    # Read an parse json file
+    # @param {String} full path
     def load_json_file!(path)
       return nil if path.nil?
       begin
@@ -15,6 +19,9 @@ module Zeus
       end
     end
 
+    # name wihtout the directory path or extension
+    # eg, my_file.json => my_file
+    # @param {String} file_name
     def base_file_name(file_name)
       file_name = File.basename(file_name)
       if (short_name = file_name[/(.+)\.json$/,1])
@@ -23,10 +30,12 @@ module Zeus
       file_name
     end
 
-    def each_json_file(path = nil)
-      path ||= './'
-      path += '/*.json'
-      Dir[path].each do |path_name|
+    # Allow iterate the json file a directory
+    # @param {String} directory_path path
+    def each_json_file(directory_path = nil)
+      directory_path ||= './'
+      directory_path += '/*.json'
+      Dir[directory_path].each do |path_name|
         yield path_name
       end
     end
