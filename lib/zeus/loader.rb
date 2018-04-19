@@ -1,7 +1,7 @@
 require 'json'
 
-# Loader is a module simplify
-# operation with files
+# Loader is a module to simplify
+# operations with files
 module Zeus
   module Loader
 

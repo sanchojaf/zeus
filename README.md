@@ -27,7 +27,7 @@ Move to the root folder
 
 `$ cd zeus`
 
-The exe directive we used to create the gem, generated a zeus binary from the project. Change the permissions so we can execute the file:
+The exe directive used to create the gem, generated a zeus binary from the project. Change the permissions so we can execute the file:
 
 `$ chmod +x exe/zeus`
 
@@ -189,7 +189,7 @@ Result for `zeus find_by organizations _id 119` should include the references in
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem into your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 

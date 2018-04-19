@@ -24,7 +24,7 @@ module Zeus
       @path = path
       # load the metafile in a hash
       @meta_hash = load_json_file!(@path)
-    
+
     end
 
     # Find if exists references (foreign keys) for a partircular resouce attribute
@@ -53,7 +53,7 @@ module Zeus
         !(entry_resource['fields'][attr]).nil?
     end
 
-    # return if exists the references for a partircular resouce attribute
+    # return if exists the references for a particular resource attribute
     # in other files.
     # return nil if not exist
     # @param {String} resource_name The name of the resorce.
